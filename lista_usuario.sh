@@ -34,28 +34,22 @@ MENSAGEM="
     -v - versão
     -s - ordenar a saida
 "
-VERSAO="1.1"
-
-# ------------------------------------------------------------------------ #
-
-
-# ------------------------------- TESTES ----------------------------------------- #
+VERSAO="1.2"
 # ------------------------------- EXECUÇÃO ----------------------------------------- #
-#if [ "$1" = "-h" ]; then
-#    echo "$MENSAGEM" && exit 0
-#elif [ "$1" = "-v" ]; then
-#    echo "$VERSAO" && exit
-#elif [ "$1" = "-s" ]; then
-#    echo "$USUARIOS" | sort && exit
-#else
-#    echo ""
-#fi
+while test -n "$1"
+do
+    case "$1" in
+        -h) echo "$MENSAGEM" && exit 0                   ;;
+        -v) echo "$VERSAO" && exit                       ;;
+        -s) chave_o=1                                    ;;
+        -m) chave_m=1                                    ;;
+         *) echo "Opção inválida, valide o -h" && exit 1 ;;
+    esac
+    shift
+done
+[ $chave_o -eq 1 ] && USUARIOS=$(echo "$USUARIOS" | sort)
+[ $chave_m -eq 1 ] && USUARIOS=$(echo "$USUARIOS" | tr [a-z] [A-Z])
 
-case "$1" in
-    -h) echo "$MENSAGEM" && exit 0      ;;
-    -v) echo "$VERSAO" && exit          ;;
-    -s) echo "$USUARIOS" | sort && exit ;;
-     *) echo "$USUARIOS"                ;;
-esac
+echo "$USUARIOS"
 
 # ------------------------------------------------------------------------ #
