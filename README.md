@@ -13,7 +13,7 @@
 # ------------------------------------------------------------------------ #
 
 ####  Extrai nomes do usuario com possibilidade de colocar em maiusculo
-#  Ou em ordem alfabetica
+####  Ou em ordem alfabetica
 ###  Exemplos:
 
 ####      $ lista_usuario.sh -s -m
