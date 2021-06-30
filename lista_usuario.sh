@@ -41,15 +41,21 @@ VERSAO="1.0"
 
 # ------------------------------- TESTES ----------------------------------------- #
 # ------------------------------- EXECUÇÃO ----------------------------------------- #
-if [ "$1" = "-h" ]; then
-    echo "$MENSAGEM" && exit 0
-elif [ "$1" = "-v" ]; then
-    echo "$VERSAO" && exit
-elif [ "$1" = "-s" ]; then
-    echo "$USUARIOS" | sort && exit
-else
-    echo ""
-fi
+#if [ "$1" = "-h" ]; then
+#    echo "$MENSAGEM" && exit 0
+#elif [ "$1" = "-v" ]; then
+#    echo "$VERSAO" && exit
+#elif [ "$1" = "-s" ]; then
+#    echo "$USUARIOS" | sort && exit
+#else
+#    echo ""
+#fi
 
-echo "$USUARIOS"
+case "$1" in
+    -h) echo "$MENSAGEM" && exit 0      ;;
+    -v) echo "$VERSAO" && exit          ;;
+    -s) echo "$USUARIOS" | sort && exit ;;
+     *) echo "$USUARIOS"                ;;
+esac
+
 # ------------------------------------------------------------------------ #
